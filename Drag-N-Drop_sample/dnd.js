@@ -31,10 +31,8 @@ function foodItemDragEnd(ev)
 // when something is being dragged into a spacer.
 function spacerDragEnter(ev, target)
 {
-    // change color
-    ev.target.style.backgroundColor = "green";
-    // change size
-    ev.target.style.height = "20px";
+    // change color and size by adding a css-class
+    ev.target.classList.add("draggedover");
     // don't do default things'
     ev.preventDefault();
 }
@@ -50,11 +48,9 @@ function spacerDrop(ev, target)
     {
         // don't do defaults
         ev.preventDefault();
-        // remove color
-        ev.target.style.backgroundColor = "";
-        // get litle
-        ev.target.style.height = "2px";
-
+        
+        // change color and size back to normal
+        ev.target.classList.remove('draggedover');
         // move the spacer next to the one being draged 
         ev.target.parentNode.insertBefore(curDrag.nextSibling, ev.target);
         // move the dragged item here
@@ -65,8 +61,8 @@ function spacerDrop(ev, target)
     {
         // these three line do the same as above  
         ev.preventDefault();
-        ev.target.style.backgroundColor = "";
-        ev.target.style.height = "2px";
+        // change color and size back to normal
+        ev.target.classList.remove('draggedover');
 
         // copy a spacer here
         ev.target.parentNode.insertBefore(ev.target.cloneNode(), ev.target);
@@ -87,10 +83,8 @@ function spacerDragOver(ev, target)
 function spacerDragLeave(ev, target)
 {
     ev.preventDefault();
-    // get litle
-    ev.target.style.height = "2px";
-    // no color
-    ev.currentTarget.style.backgroundColor = "";
+    // change color and size back to normal
+    ev.target.classList.remove('draggedover');
 }
 
 //******* Eventhandlers for dragging items into the waistebin in the left stack **********//
@@ -103,8 +97,8 @@ function waistebinDragEnter(ev, target)
         && curDrag.parentNode.id == "rightStack")
     {
         ev.preventDefault();
-        // turn on some visual response: a red border
-        this.style.border = "1px dotted red";
+        // add visual response by adding a css-class
+        this.classList.add('draggedover');
     }
 }
 
@@ -132,7 +126,8 @@ function waistebinDrop(ev, target)
         curDrag.nextSibling.remove();
         // remove the item (from rightstack).
         curDrag.remove();
-        this.style.border = "";
+        // turn off the visual response by removing a css-class
+        this.classList.remove('draggedover');
     }
 }
 
@@ -144,8 +139,8 @@ function waistebinDragLeave(ev, target)
         && curDrag.parentNode.id == "rightStack")
     {
         ev.preventDefault();
-        // remove border
-        this.style.border = "";
+        // turn off the visual response by removing a css-class
+        this.classList.remove('draggedover');
     }
 }
 

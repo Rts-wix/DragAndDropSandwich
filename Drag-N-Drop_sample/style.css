@@ -10,39 +10,53 @@ root {
     display: block;
 }
 
-		#div1, #div2
-		{
-			float:left; 
-			width:100px; 
-			height:35px;
-			margin: 10px;
-			padding: 10px;
-			border:1px solid #aaaaaa;
-		}
+#div1, #div2
+{
+    float:left; 
+    width:100px; 
+    height:35px;
+    margin: 10px;
+    padding: 10px;
+    border:1px solid #aaaaaa;
+}
 
-		#rightStack .spacer
-		{
-			height: 2px;
-			width: 70px;
-			background-color: silver;
-			border: 1px solid black;
-		}
+#rightStack .spacer
+{
+    height: 2px;
+    width: 70px;
+    background-color: silver;
+    border: 1px solid black;
+}
 
-		div#stackHolder
-		{
-			clear: both;
-			width: 60%;
-		}
+#rightStack .spacer.draggedover
+{
+    height: 20px;
+    background-color: green;
+}
 
-		div#stackHolder > div
-		{
-			float: left;
-			width: 30%
-		}
-                
-                div#waistebin
-                {
-                    height: 50px;
-                    width: 80%;
-                    background-color: gray;
-                }
+
+
+div#stackHolder
+{
+    clear: both;
+    width: 60%;
+}
+
+div#stackHolder > div
+{
+    float: left;
+    width: 30%
+}
+
+div#waistebin
+{
+    height: 50px;
+    width: 80%;
+    background-color: gray;
+}
+
+div#waistebin.draggedover
+{
+    border: 1px dotted red;
+}
+
