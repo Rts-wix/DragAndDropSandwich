@@ -160,6 +160,10 @@ function eventListeners()
 {
     // finding foodItems
     var foodItems = document.querySelectorAll('#stackHolder .foodItem[draggable=true]');
+    //                       ^^^^^^^^^^^^^^^^ this returns an array of all 
+    //                                        the elements that fits the pattern
+    // we then iterate the array with a for loop, 
+    // to handle each element one by one.
     for (i = 0; i < foodItems.length; i++)
     {
         // clear existing event handler for dragstart
@@ -186,6 +190,7 @@ function eventListeners()
 
     // find the waitebin (the should only be one), and set handlers
     var wistebin = document.querySelector('div#waistebin[dropable=true]');
+    //                      ^ note that querySelector is the singular version of querySelctorAll
     wistebin.addEventListener('dragenter', waistebinDragEnter, false)
     wistebin.addEventListener('dragover', waistebinDragOver, false);
     wistebin.addEventListener('drop', waistebinDrop, true);
